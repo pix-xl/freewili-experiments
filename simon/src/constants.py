@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from freewili import FreeWili
+from pathlib import Path
 from freewili.types import ButtonColor
 
 class SimonColor(Enum):
@@ -27,16 +27,19 @@ COLOR_TO_RGB = {
     SimonColor.YELLOW: (255, 180, 0)
 }
 
-COLOR_TO_IMG = {
-    "Base" : "/simon/assets/fwi/base.fwi",
-    SimonColor.RED: "/simon/assets/fwi/red.fwi",
-    SimonColor.BLUE: "/simon/assets/fwi/blue.fwi",
-    SimonColor.GREEN: "/simon/assets/fwi/green.fwi",
-    SimonColor.YELLOW: "/simon/assets/fwi/yellow.fwi"
-}
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+ASSETS_FWI = PROJECT_ROOT / "simon" / "assets" / "fwi"
 
-START_SCREEN_TEXT = "/simon/assets/fwi/start_screen_text.fwi"
-START_SCREEN_NOTEXT = "/simon/assets/fwi/start_screen_notext.fwi"
-GAMEOVER_SCREEN = "/simon/assets/fwi/gameover.fwi"
+START_SCREEN_TEXT = ASSETS_FWI / "start_screen_text.fwi"
+START_SCREEN_NOTEXT = ASSETS_FWI / "start_screen_notext.fwi"
+GAMEOVER_SCREEN = ASSETS_FWI / "gameover.fwi"
+BASE = ASSETS_FWI / "base.fwi"
+
+COLOR_TO_IMG = {
+    SimonColor.RED: ASSETS_FWI / "red.fwi",
+    SimonColor.BLUE: ASSETS_FWI / "blue.fwi",
+    SimonColor.GREEN: ASSETS_FWI / "green.fwi",
+    SimonColor.YELLOW: ASSETS_FWI / "yellow.fwi"
+}
 
 MENU_BUTTON = ButtonColor.White
